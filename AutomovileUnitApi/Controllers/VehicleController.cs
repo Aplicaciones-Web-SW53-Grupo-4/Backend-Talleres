@@ -26,7 +26,7 @@ namespace AutomovileUnitApi.Controllers
         {
             Vehicle vehiculo = new Vehicle();
             vehiculo.Id = id;
-            vehiculo.Band = "Toyota";
+            vehiculo.Band = "Nissan";
             vehiculo.Model = "Accent";
             vehiculo.Color = "Negro";
             vehiculo.Prize = 70000;
@@ -48,18 +48,15 @@ namespace AutomovileUnitApi.Controllers
         {
             
         }
-
         [HttpDelete("{Id}")]
         public StatusCodeResult Delete(int id)
         {
             try
             {
-                return StatusCode(204); 
-
+                return StatusCode(204);
             }
             catch (Exception ex)
             {
-             
                 return StatusCode(500);
             }
         }
