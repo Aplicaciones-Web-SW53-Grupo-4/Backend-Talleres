@@ -44,9 +44,19 @@ namespace AutomovileUnitApi.Controllers
         
         // PUT: api/Vehiculo/5
         [HttpPut("{Id}")]
-        public void Put(int id, [FromBody] string value)
+        public StatusCodeResult Put(int id, [FromBody] string value)
         {
-            
+            {
+                try
+                {
+                    return StatusCode(200); // 200 OK o 204 No Content
+                }
+                catch (Exception ex)
+                {
+                    return StatusCode(500); // 500 Internal Server Error
+                }
+
+            } 
         }
         [HttpDelete("{Id}")]
         public StatusCodeResult Delete(int id)
