@@ -32,12 +32,12 @@ namespace AutomovileUnitApi.Controllers
         }
 
         // PUT: api/Vehiculo/5
-        [HttpPut("{id}")]
+        [HttpPut("{Id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{Id}")]
         public IActionResult Delete(int id)
         {
             try
