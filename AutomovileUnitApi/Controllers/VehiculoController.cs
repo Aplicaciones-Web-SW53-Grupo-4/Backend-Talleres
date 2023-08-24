@@ -37,10 +37,19 @@ namespace AutomovileUnitApi.Controllers
         {
         }
 
-        // DELETE: api/Vehiculo/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            try
+            {
+                return StatusCode(204); 
+
+            }
+            catch (Exception ex)
+            {
+             
+                return StatusCode(500, "Se produjo un error interno en el servidor.");
+            }
         }
     }
 }
