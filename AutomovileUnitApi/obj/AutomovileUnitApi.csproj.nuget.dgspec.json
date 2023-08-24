@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\JOSEPH\\RiderProjects\\AutomovileUnitApi\\AutomovileUnitApi\\AutomovileUnitApi.csproj": {}
+    "C:\\Users\\JOSEPH\\Music\\Tallers\\Backend-Talleres\\AutomovileUnitApi\\AutomovileUnitApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\JOSEPH\\RiderProjects\\AutomovileUnitApi\\AutomovileUnitApi\\AutomovileUnitApi.csproj": {
+    "C:\\Users\\JOSEPH\\Music\\Tallers\\Backend-Talleres\\AutomovileUnitApi\\AutomovileUnitApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\JOSEPH\\RiderProjects\\AutomovileUnitApi\\AutomovileUnitApi\\AutomovileUnitApi.csproj",
+        "projectUniqueName": "C:\\Users\\JOSEPH\\Music\\Tallers\\Backend-Talleres\\AutomovileUnitApi\\AutomovileUnitApi.csproj",
         "projectName": "AutomovileUnitApi",
-        "projectPath": "C:\\Users\\JOSEPH\\RiderProjects\\AutomovileUnitApi\\AutomovileUnitApi\\AutomovileUnitApi.csproj",
+        "projectPath": "C:\\Users\\JOSEPH\\Music\\Tallers\\Backend-Talleres\\AutomovileUnitApi\\AutomovileUnitApi.csproj",
         "packagesPath": "C:\\Users\\JOSEPH\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\JOSEPH\\RiderProjects\\AutomovileUnitApi\\AutomovileUnitApi\\obj\\",
+        "outputPath": "C:\\Users\\JOSEPH\\Music\\Tallers\\Backend-Talleres\\AutomovileUnitApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\JOSEPH\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -43,6 +43,10 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.10, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[7.0.9, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
