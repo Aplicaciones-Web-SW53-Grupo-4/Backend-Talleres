@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using AutomovileUnitApi.Model;
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace AutomovileUnitApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class VehiculoController : ControllerBase
+    public class VehicleController : ControllerBase
     {
         // GET: api/Vehiculo
         [HttpGet]
@@ -20,25 +22,35 @@ namespace AutomovileUnitApi.Controllers
 
         // GET: api/Vehiculo/5
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public Vehicle Get(int id)
         {
-            return "value";
+            Vehicle vehiculo = new Vehicle();
+            vehiculo.Id = id;
+            vehiculo.Band = "Toyota";
+            vehiculo.Model = "Accent";
+            vehiculo.Color = "Negro";
+            vehiculo.Prize = 70000;
+            return vehiculo;
         }
 
         // POST: api/Vehiculo
         [HttpPost]
-        public void Post([FromBody] string value)
+        public StatusCodeResult Post([FromBody] Vehicle vehiculo)
         {
+            if (vehiculo.Band == "" || vehiculo.Model == "" || vehiculo.Color == "" || vehiculo.Prize == 0)
+                return StatusCode(400);
+            return StatusCode(201);
         }
-
+        
         // PUT: api/Vehiculo/5
         [HttpPut("{Id}")]
         public void Put(int id, [FromBody] string value)
         {
+            
         }
 
         [HttpDelete("{Id}")]
-        public IActionResult Delete(int id)
+        public StatusCodeResult Delete(int id)
         {
             try
             {
@@ -48,7 +60,7 @@ namespace AutomovileUnitApi.Controllers
             catch (Exception ex)
             {
              
-                return StatusCode(500, "Se produjo un error interno en el servidor.");
+                return StatusCode(500);
             }
         }
     }

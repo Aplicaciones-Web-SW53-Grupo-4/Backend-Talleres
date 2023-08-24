@@ -1,6 +1,6 @@
 ﻿namespace AutomovileUnitApi.Model;
 
-public class vehicle
+public class Vehicle
 {
     public int Id { get; set; }
     public string Model { get; set; }
