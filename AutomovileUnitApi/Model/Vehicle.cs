@@ -7,4 +7,8 @@ public class Vehicle
     public string Band { get; set; }
     public string Color { get; set; }
     public double Prize { get; set; }
+    
+    public string Rental_Start_Date { get; set; }
+    
+    public string Date_End_Rental { get; set; }
 }

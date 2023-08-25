@@ -30,6 +30,8 @@ namespace AutomovileUnitApi.Controllers
             vehiculo.Model = "Accent";
             vehiculo.Color = "Negro";
             vehiculo.Prize = 70000;
+            vehiculo.Rental_Start_Date = "25/08/2023";
+            vehiculo.Date_End_Rental = "25/09/2023";
             return vehiculo;
         }
 
@@ -37,7 +39,7 @@ namespace AutomovileUnitApi.Controllers
         [HttpPost]
         public StatusCodeResult Post([FromBody] Vehicle vehiculo)
         {
-            if (vehiculo.Band == "" || vehiculo.Model == "" || vehiculo.Color == "" || vehiculo.Prize == 0)
+            if (vehiculo.Band == "" || vehiculo.Model == "" || vehiculo.Color == "" || vehiculo.Prize == 0|| vehiculo.Rental_Start_Date==""|| vehiculo.Date_End_Rental=="")
                 return StatusCode(400);
             return StatusCode(201);
         }
