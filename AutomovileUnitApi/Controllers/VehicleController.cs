@@ -1,10 +1,11 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using AutomovileUnitApi.Model;
-
 using Microsoft.AspNetCore.Mvc;
 
 namespace AutomovileUnitApi.Controllers
@@ -13,59 +14,64 @@ namespace AutomovileUnitApi.Controllers
     [ApiController]
     public class VehicleController : ControllerBase
     {
-        // GET: api/Vehiculo
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        private List<Vehicle?> vehicleList = new List<Vehicle?>();
 
-        // GET: api/Vehiculo/5
+        
+        [HttpGet()]
+        public List<Vehicle?> GetAllVehicles()
+        {
+            return vehicleList;
+        }
+        
         [HttpGet("{id}", Name = "Get")]
         public Vehicle Get(int id)
         {
-            Vehicle vehiculo = new Vehicle();
-            vehiculo.Id = id;
-            vehiculo.Band = "Nissan";
-            vehiculo.Model = "Accent";
-            vehiculo.Color = "Negro";
-            vehiculo.Prize = 70000;
-            vehiculo.Rental_Start_Date = "25/08/2023";
-            vehiculo.Date_End_Rental = "25/09/2023";
-            return vehiculo;
+            Vehicle vehicle = new Vehicle();
+            vehicle.Id = id;
+            vehicle.Band = "Nissan";
+            vehicle.Model = "Accent";
+            vehicle.Color = "Negro";
+            vehicle.Prize = 70000;
+            vehicle.Rental_Start_Date = "25/08/2023";
+            vehicle.Date_End_Rental = "25/09/2023";
+            return vehicle;
         }
 
-        // POST: api/Vehiculo
         [HttpPost]
-        public StatusCodeResult Post([FromBody] Vehicle vehiculo)
+        public StatusCodeResult Post([FromBody] Vehicle? vehicle)
         {
-            if (vehiculo.Band == "" || vehiculo.Model == "" || vehiculo.Color == "" || vehiculo.Prize == 0|| vehiculo.Rental_Start_Date==""|| vehiculo.Date_End_Rental=="")
+            if (vehicle.Band == "" || vehicle.Model == "" || vehicle.Color == "" || vehicle.Prize == 0|| vehicle.Rental_Start_Date==""|| vehicle.Date_End_Rental=="")
                 return StatusCode(400);
+            vehicleList.Add(vehicle);
             return StatusCode(201);
         }
         
-        // PUT: api/Vehiculo/5
         [HttpPut("{Id}")]
-        public StatusCodeResult Put(int id, [FromBody] string value)
+        public StatusCodeResult Put(int id, [FromBody] Vehicle? vehicle)
         {
             {
+                if (vehicle == null || id != vehicle.Id)
+                    return StatusCode(400);
                 try
                 {
-                    return StatusCode(200); // 200 OK o 204 No Content
+                    return StatusCode(200); 
                 }
                 catch (Exception ex)
                 {
-                    return StatusCode(500); // 500 Internal Server Error
+                    return StatusCode(500); 
                 }
-
             } 
         }
         [HttpDelete("{Id}")]
         public StatusCodeResult Delete(int id)
         {
+            Vehicle? vehicle = vehicleList.FirstOrDefault(vehicleAux => vehicleAux != null && vehicleAux.Id == id);
+            if (vehicle == null)
+                return StatusCode(404);
             try
             {
-                return StatusCode(204);
+                vehicleList.Remove(vehicle);
+                return StatusCode(200);
             }
             catch (Exception ex)
             {
