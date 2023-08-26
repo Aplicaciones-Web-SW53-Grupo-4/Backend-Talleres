@@ -10,10 +10,43 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AutomovileUnitApi.Controllers
 {
+    
+    
+    
+    
     [Route("api/[controller]")]
     [ApiController]
     public class VehicleController : ControllerBase
     {
+        private static List<Vehicle> _vehicles = new List<Vehicle>()
+        {
+            new Vehicle()
+            {
+                Id = 1, Band = "Nissan", Model = "Accent", Color = "Negro", Prize = 75000, Rental_Start_Date = "25/08/2023",
+                Date_End_Rental = "12/09/2023"
+            },
+            new Vehicle()
+            {
+                Id = 2, Band = "Toyota", Model = "Corolla", Color = "Blanco", Prize = 80000,
+                Rental_Start_Date = "25/07/2023", Date_End_Rental = "15/09/2023"
+            },
+            new Vehicle()
+            {
+                Id = 3, Band = "Volkswagen", Model = "Gol", Color = "Amarillo", Prize = 90000,
+                Rental_Start_Date = "25/05/2023", Date_End_Rental = "29/09/2023"
+            },
+            new Vehicle()
+            {
+                Id = 4, Band = "BMW", Model = "i4", Color = "Azul", Prize = 70200, Rental_Start_Date = "23/08/2023",
+                Date_End_Rental = "21/09/2023"
+            },
+            new Vehicle()
+            {
+                Id = 5, Band = "Jeep", Model = "Avenger", Color = "Verde", Prize = 74200, Rental_Start_Date = "18/08/2023",
+                Date_End_Rental = "27/09/2023"
+            }
+        };
+
         private List<Vehicle?> vehicleList = new List<Vehicle?>();
 
         
@@ -22,7 +55,33 @@ namespace AutomovileUnitApi.Controllers
         {
             return vehicleList;
         }
+        /*
+        [HttpGet("{id}", Name = "GetVehicle")]
+        public ActionResult<Vehicle> GetForDataBase(int id)
+        {
+            Vehicle vehicle = vehicles.Find(s => s.Id == id);
+            if (vehicle == null)
+            {
+                return NotFound(); // Retorna una respuesta HTTP 404 Not Found
+            }
+            return vehicle;
+        }
+        */
         
+        [HttpGet("another/{id}", Name = "GetAnother")]
+        public ActionResult<Vehicle> GetAnother(int id)
+        {
+            var vehicle = _vehicles.FirstOrDefault(v => v.Id == id);
+
+            if (vehicle == null)
+            {
+                return NotFound(); // Retorna una respuesta HTTP 404 Not Found si el vehículo no se encuentra
+            }
+
+            return Ok(vehicle); // Retorna una respuesta HTTP 200 OK con los datos del vehículo
+        }
+        
+       
         [HttpGet("{id}", Name = "Get")]
         public Vehicle Get(int id)
         {
